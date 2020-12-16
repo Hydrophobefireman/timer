@@ -914,10 +914,10 @@
   resolved "https://registry.yarnpkg.com/@hydrophobefireman/j-utils/-/j-utils-2.1.6.tgz#4ddf7e57d53ceae7245c7b907665f98f6f2f30f8"
   integrity sha512-gwcKHXTsos2KaQisSE/0QxaelhwHL+EnpcyBN9I9oDnQfhqj6D05XPlMGJIuuwn1jiWtd9z8C/bjefEuUQrNng==
 
-"@hydrophobefireman/module-nomodule@^1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@hydrophobefireman/module-nomodule/-/module-nomodule-1.0.1.tgz#bc9dcd5f4efe3e64c02751b25cb9fc5c92217106"
-  integrity sha512-8DBczuo8YuPYvPl6nGWIMKmRzP8EfwAOh7oB/r8W/sVmGfzFwvJeGPJoahkH6cI/pMbXpc4HmMCNw/yAfmvquw==
+"@hydrophobefireman/module-nomodule@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@hydrophobefireman/module-nomodule/-/module-nomodule-1.0.2.tgz#06a0fe910f434d3fb15c30be581ba5765256a4a3"
+  integrity sha512-dCGyL47ddzk1oZD2lvnA6Lg6wNYgl4WX518sIvspetIsrwC3Mh0UY6rktwjpWicLIHO3sXQUGCwxVrh/1lfocw==
   dependencies:
     fs-extra "9.0.1"
 

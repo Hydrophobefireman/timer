@@ -4,10 +4,13 @@ import {
   Path,
   Router,
 } from "@hydrophobefireman/ui-lib";
+import {
+  Object_values,
+  Object_entries as entries,
+} from "@hydrophobefireman/j-utils";
 
 import { ChunkLoading } from "../ChunkLoadingComponent";
 import { NotFound } from "../../pages/404";
-import { Object_entries as entries } from "@hydrophobefireman/j-utils";
 
 const getDefault: <T>(mod: { default: T }) => T = (mod) => mod.default;
 
@@ -15,6 +18,8 @@ const componentMap = {
   "/": () => import("../../pages/Landing").then(getDefault),
   "/t/:time": () => import("../../pages/Result").then(getDefault),
 };
+
+Object_values(componentMap).forEach((x) => x());
 
 export function RouteLoader() {
   return (
