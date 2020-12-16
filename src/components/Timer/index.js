@@ -25,7 +25,7 @@ function parseTime(timeLeft) {
 
   const sec = _left;
 
-  if (sec > 3) {
+  if (inSeconds > 3.5) {
     return `${tFix(hours)}:${tFix(mins)}:${tFix(sec)}`;
   }
   const r = 1;
