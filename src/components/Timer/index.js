@@ -53,9 +53,9 @@ export function Timer({ target, onComplete }) {
 
   function updateTime() {
     if (!isTiming) return;
-    const prev = timeLeft;
-    const tl = prev - 1000;
-    setTimeLeft(tl);
+    const n = getTimeLeft(target);
+
+    setTimeLeft(n);
   }
 
   useInterval(updateTime, [isTiming ? 1000 : null]);
