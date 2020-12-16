@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "allowJs": true,
+    "alwaysStrict": true,
+    "declaration": true,
+    "moduleResolution": "Node",
+    "target": "ESNext",
+    "rootDir": "./",
+    "baseUrl": ".",
+    "jsx": "preserve"
+  },
+  "exclude": [".babelconfig.js"]
+}
