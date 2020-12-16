@@ -1,12 +1,15 @@
-import { Component } from "@hydrophobefireman/ui-lib";
+import { useEffect, useRef, useState } from "@hydrophobefireman/ui-lib";
+
+import { css } from "catom";
 import { useInterval } from "../../customHooks";
+
 const tFix = (t) => {
   t = "" + t;
   return (t.length === 1 ? "0" : "") + t;
 };
 
 const getTimeLeft = (n) => n - +new Date();
-function parseTime(timeLeft, last) {
+function parseTime(timeLeft) {
   let _left;
   const inSeconds = timeLeft / 1000;
   const secInAnHour = 3600;
@@ -21,15 +24,16 @@ function parseTime(timeLeft, last) {
   _left = Math.round(_left % secInAMin);
 
   const sec = _left;
-  if (inSeconds > 3) {
+
+  if (sec > 3) {
     return `${tFix(hours)}:${tFix(mins)}:${tFix(sec)}`;
   }
-  const r = last[2];
+  const r = 1;
   switch (sec) {
     case 3:
-      return last[0];
+      return 3;
     case 2:
-      return last[1];
+      return 2;
     case 1:
       return r;
     default:
@@ -37,32 +41,45 @@ function parseTime(timeLeft, last) {
   }
 }
 
-export function Timer({ target, last3Words, onComplete }) {
+export function Timer({ target, onComplete }) {
   const [timeLeft, setTimeLeft] = useState(() => getTimeLeft(target));
-  const [isTiming, setIsTiming] = useState(timeLeft > 500);
+  const isTiming = timeLeft > 500;
+  const completeCalled = useRef(false);
 
   useEffect(() => {
-    setTimeLeft(() => getTimeLeft(target));
+    const t = getTimeLeft(target);
+    setTimeLeft(t);
   }, [target]);
 
   function updateTime() {
+    if (!isTiming) return;
     const prev = timeLeft;
     const tl = prev - 1000;
-    const $isTiming = tl > 500;
     setTimeLeft(tl);
-    setIsTiming($isTiming);
   }
 
   useInterval(updateTime, [isTiming ? 1000 : null]);
 
-  useEffect(() => !isTiming && onComplete(), [isTiming]);
+  useEffect(
+    () =>
+      !isTiming &&
+      !completeCalled.current &&
+      (completeCalled.current = true) &&
+      onComplete(),
+    [isTiming]
+  );
 
   return isTiming ? (
-    <>
-      <div class="heading-text goes-live">Going Live In</div>
-      <div class="heading-text going-live-time-delta">
-        {parseTime(timeLeft,last3Words)}
+    <div>
+      <div
+        class={css({
+          media: {
+            "(min-width:550px)": { fontSize: "6.5rem" },
+          },
+        })}
+      >
+        {parseTime(timeLeft)}
       </div>
-    </>
+    </div>
   ) : null;
 }

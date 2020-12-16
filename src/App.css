@@ -1,5 +1,16 @@
 html {
+  /* --background-color: #1e1e1e; */
+  --background-color: #000;
+  --font-color: #fff;
+  --default-font: "Quicksand", sans-serif;
+  font-family: var(--default-font);
+
+  --spec-color: #ff5e00;
   -webkit-tap-highlight-color: transparent;
+  --haloc: "Orbitron";
+  --border-shadow-color: #e3e3e3;
+  --translate-normal-pos: translate(1%, 150%);
+  --translate-up: translate(1%, 1%);
 }
 
 button {
@@ -11,4 +22,12 @@ button {
   margin: 0;
   user-select: none;
   outline: none;
+  color: var(--font-color);
+}
+
+body {
+  margin: 0;
+  padding: 4px;
+  background-color: var(--background-color);
+  color: var(--font-color);
 }

@@ -3,6 +3,7 @@ import {
   Router,
   useEffect,
   RouterSubscription,
+  useRef,
 } from "@hydrophobefireman/ui-lib";
 
 function useMount(fn: () => unknown | (() => void)) {
@@ -35,7 +36,9 @@ export function useViewportSize(): [number, number] {
   return dimensions;
 }
 
-
+interface CB {
+  (): void;
+}
 export function useInterval(callback: CB, delay?: number) {
   const savedCallback = useRef<CB>();
   savedCallback.current = callback;
