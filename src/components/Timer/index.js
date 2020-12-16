@@ -58,7 +58,7 @@ export function Timer({ target, onComplete }) {
     setTimeLeft(n);
   }
 
-  useInterval(updateTime, [isTiming ? 1000 : null]);
+  useInterval(updateTime, isTiming ? 1000 : null);
 
   useEffect(
     () =>
